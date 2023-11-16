@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "server": "nodemon ./app.js"
+    "server": "nodemon ./app.js",
+    "lint": "eslint /**",
+    "lint:fix": "eslint /** --fix"
   },
   "keywords": [],
   "author": "",
