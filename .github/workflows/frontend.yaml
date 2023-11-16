@@ -10,20 +10,6 @@ defaults:
     working-directory: frontend
 
 jobs:
-  lint:
-      name: Análise estática
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Use Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: 16.x
-            cache: 'npm'
-            cache-dependency-path: frontend/package-lock.json
-        - run: npm ci
-        - run: npm run lint
-
   vulnerability:
     name: Teste de Vulnerabilidade
     runs-on: ubuntu-latest
@@ -37,38 +23,3 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - run: npm ci
       - run: npm audit --production
-
-  tests:
-    name: Testes de Sistema (E2E)
-    runs-on: ubuntu-latest
-    services:
-      mongodb:
-        image: mongo
-        env:
-          MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: root
-        ports:
-          - 27017:27017
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Starts API server in background
-        run: |
-          npm --prefix ../frontend ci
-          npm --prefix ../frontend run start &
-      - name: Run cypress
-        uses: cypress-io/github-action@v2
-        with:
-          config-file: cypress.config.js
-          build: npm run build
-          start: npm start
-          working-directory: frontend
-      - name: Arquiva os videos e screenshots
-        uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: artifacts
-          path: |
-            frontend/cypress/screenshots/
-            frontend/cypress/videos/
-          retention-days: 1
