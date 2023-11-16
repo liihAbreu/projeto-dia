@@ -46,7 +46,7 @@ const Search = () => {
                         <div id="search">
                             <h2>Você esta buscando por: {search} </h2>
                             {clients && clients.map((client) => (
-                                <div className="cards">
+                                <div className="cards" key={client._id}>
                                     <CardClient nome={client.nome} endereco={client.endereco} telefone={client.telefone} id={client._id} data={client.date ? client.date : "" } hora={client.hora ? client.hora : "" } />
                                     <Link className="btn" to={`/clients/${client._id}`}>Alterar <BsPencilFill/></Link>
                                 </div>

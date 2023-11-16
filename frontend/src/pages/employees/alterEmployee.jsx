@@ -52,7 +52,7 @@ const AlterEmployee = () => {
     //Load user data
     useEffect(() => {
         dispatch(getUserDetails(id))
-    }, [dispatch])
+    }, [dispatch, id])
 
    //Fill form with user data
    useEffect(() =>{

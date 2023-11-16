@@ -36,14 +36,14 @@ import {getAllServices} from "../../slices/servClientSlice"
 const Home = () => {
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.auth)
-    const {services, loading, message, error} = useSelector((state) => state.service)
+    const {services, loading,} = useSelector((state) => state.service)
     const [noService, setNoService] = useState(false)
     const userLocal = JSON.parse(localStorage.getItem("user"))
 
     //Load all services
     useEffect(() => {
         dispatch(getAllServices(userLocal.idMestre))
-    }, [dispatch])
+    }, [dispatch, userLocal.idMestre])
 
     useEffect(() => {
         if(services){

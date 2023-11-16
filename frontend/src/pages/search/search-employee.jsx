@@ -46,8 +46,8 @@ const SearchEmployee = () => {
                         <div id="search">
                             <h2 className="mb-5">Você esta buscando por: {search} </h2>
                             {users && users.map((user) => (
-                                <div className="cards">
-                                    <CardEmployee key={user._id} name={user.name} email={user.email} perfil={user.perfil} id={user._id} />
+                                <div className="cards" key={user._id}>
+                                    <CardEmployee name={user.name} email={user.email} perfil={user.perfil} id={user._id} />
                                     <Link className="btn btn-alter" to={`/users/${user._id}`}>Alterar <BsPencilFill/></Link>
                                 </div>
                             ))}

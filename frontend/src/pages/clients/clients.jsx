@@ -25,7 +25,6 @@ import { getServiceClientById } from "../../slices/servClientSlice";
 const Clients = () => {
     const [query, setQuery] = useState("")
     const {clients, loading} = useSelector((state) => state.client)
-    const {services} = useSelector((state) => state.service)
     const userLocal = JSON.parse(localStorage.getItem("user"))
     const dispatch = useDispatch()
     const navigate = useNavigate()  
@@ -35,7 +34,7 @@ const Clients = () => {
         clients.map((client) => {
             dispatch(getServiceClientById(client._id))
         })
-    }, [dispatch])
+    }, [dispatch, clients, userLocal.idMestre])
 
     //Buscar clientes
     const handleSearch = (e) => {

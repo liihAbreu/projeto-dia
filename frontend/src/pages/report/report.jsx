@@ -29,7 +29,7 @@ const Report = () => {
 
     useEffect(() => {
         dispatch(getAllServices(userLocal.idMestre))
-    }, [dispatch])
+    }, [dispatch, userLocal.idMestre])
 
     //Array com todos os serviços que ja estão com o valor recebido como true
     const valorRecebido = services.filter((service) => {
@@ -114,7 +114,7 @@ const Report = () => {
                                         controlEvents: [
                                         {
                                             eventName: "statechange",
-                                            callback: ({ chartWrapper, controlWrapper }) => {
+                                            callback: ({ controlWrapper }) => {
                                             console.log("State changed to", controlWrapper?.getState());
                                             },
                                         },

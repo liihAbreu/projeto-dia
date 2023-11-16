@@ -216,7 +216,7 @@ const EditProfile = () => {
                             </Form>
                             <div className="button-form-profile gap-1" >
                                 <Col lg={4}>
-                                    {user.perfil === "administrador" && <button variant="primary" onClick={handleShow} className="btn">Deletar <BsTrash/></button>}
+                                    {user.perfil === "administrador" && <button onClick={handleShow} className="btn">Deletar <BsTrash/></button>}
                                 </Col>
                                 <Col lg={4}>
                                     <button ref={btnAlter} onClick={handleAlterUserData} className="btn">Alterar <BsPencilFill/></button>

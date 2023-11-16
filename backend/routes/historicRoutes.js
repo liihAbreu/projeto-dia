@@ -1,16 +1,15 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-//Controllers
-const { insertHistoric, getHistoricById } = require("../controllers/historicController");
+// Controllers
+const {insertHistoric, getHistoricById} = require('../controllers/historicController');
 
 
-//Middlewares
-const authGuard = require("../middlewares/authGuard.js");
-const validate = require("../middlewares/hendleValidation.js")
+// Middlewares
+const authGuard = require('../middlewares/authGuard.js');
 
-//Routes
-router.post("/", authGuard, insertHistoric)  
-router.get("/:id", getHistoricById)  
-      
-module.exports = router  
+// Routes
+router.post('/', authGuard, insertHistoric);
+router.get('/:id', getHistoricById);
+
+module.exports = router;

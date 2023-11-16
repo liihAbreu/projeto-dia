@@ -42,7 +42,7 @@ import {insertHistoric, getHistoricById} from "../../slices/historicSlice"
 const AlterClient = () => {
     const dispatch = useDispatch()
     const {id} = useParams()
-    const {client, loading: loadingClient, error: errorClient, message: messagClient} = useSelector((state) => state.client)
+    const {client,} = useSelector((state) => state.client)
     const {services, loading, error, message} = useSelector((state) => state.service)
     const {user} = useSelector((state) => state.auth)
     const {historics} = useSelector((state) => state.historic)
@@ -499,7 +499,7 @@ const AlterClient = () => {
                             </Form>
                             <div className="button-form-action gap-1" >
                                 <Col lg={4}>
-                                    {alterBtn && <button variant="primary" onClick={handleShow} ref={deleteService} className="btn">Deletar Serviço <BsTrash/></button>}
+                                    {alterBtn && <button onClick={handleShow} ref={deleteService} className="btn">Deletar Serviço <BsTrash/></button>}
                                 </Col>
                                 <Col lg={4}>
                                     {alterBtn && <button ref={btnAlter} className="btn" onClick={handleAlterServiceData}>Alterar Serviço <BsPencilFill/></button>}
@@ -548,7 +548,7 @@ const AlterClient = () => {
                 <Row>
                     <Col>
                         <div className={user.perfil === "administrador" ? "btn-voltar-deletar" : "btn-voltar"} >
-                            {user.perfil === "administrador" && <button variant="primary" onClick={handleShowClient} className="btn">Deletar cadastro do cliente <BsTrash/></button>}
+                            {user.perfil === "administrador" && <button onClick={handleShowClient} className="btn">Deletar cadastro do cliente <BsTrash/></button>}
                             <Link className="btn" to={`/clients/`}>Voltar <BsBoxArrowRight/></Link>
                         </div>
                     </Col>
@@ -560,7 +560,7 @@ const AlterClient = () => {
                         <Col className="mb-4 mt-4">
                             <div id="historic">
                                 {historics.map((item) => (
-                                    <p>{item.nome} {item.acao}, {item.descricaoServico}, dia {item.data} às {item.hora}</p>
+                                    <p key={item._id}>{item.nome} {item.acao}, {item.descricaoServico}, dia {item.data} às {item.hora}</p>
                                 ))}
                             </div>
                         </Col>

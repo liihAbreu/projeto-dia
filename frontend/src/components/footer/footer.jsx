@@ -12,7 +12,6 @@ import {BsWhatsapp, BsEnvelope} from "react-icons/bs"
 
 //Hooks
 import {useAuth} from "../../hooks/useAuth"
-import {useSelector} from "react-redux"
 
 import { urlImage } from "../../utils/config"
 

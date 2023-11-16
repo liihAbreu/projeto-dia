@@ -30,7 +30,7 @@ const Employess = () => {
 
     useEffect(() => {
         dispatch(getAllUsersById(userLocal.idMestre))
-    }, [dispatch])
+    }, [dispatch, userLocal.idMestre])
 
     //Buscar funcionarios
     const handleSearch = (e) => {
