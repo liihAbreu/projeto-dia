@@ -1,4 +1,4 @@
-name: API User CI
+name: Backend CI
 on:
   push:
     branches: [ main ]
@@ -46,7 +46,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
-      - run: npm run lint
+      - run: npx eslint
 
   vulnerability:
     name: Teste de Vulnerabilidade
