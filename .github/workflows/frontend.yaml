@@ -51,20 +51,20 @@ jobs:
           - 27017:27017
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v2
       - name: Starts API server in background
         run: |
           npm --prefix ../frontend ci
           npm --prefix ../frontend run start &
       - name: Run cypress
-        uses: cypress-io/github-action@v4.1.0
+        uses: cypress-io/github-action@v2
         with:
           config-file: cypress.config.js
           build: npm run build
           start: npm start
           working-directory: frontend
       - name: Arquiva os videos e screenshots
-        uses: actions/upload-artifact@v4.1.0
+        uses: actions/upload-artifact@v2
         if: failure()
         with:
           name: artifacts
