@@ -38,6 +38,8 @@ const Home = () => {
     const {user} = useSelector((state) => state.auth)
     const {services, loading,} = useSelector((state) => state.service)
     const [noService, setNoService] = useState(false)
+    const [data, setdata] = useState()
+    const [finalizado, setFinalizado] = useState()
     const userLocal = JSON.parse(localStorage.getItem("user"))
 
     //Load all services
@@ -49,18 +51,23 @@ const Home = () => {
         if(services){
             services.map((service) => {
                 if(!service.finalizado){
-                    if(service.date == moment().format("DD/MM/YYYY")){
-                        setNoService(false)
-                    }else{
-                        setNoService(true)
-                    }
+                    setNoService(false)
+                    setFinalizado(true)
+                }
+                if(service.date == moment().format("DD/MM/YYYY")){
+                    setdata(true)
                 }
             })
+
+            if(services.length === 0){
+                setNoService(true)
+            }
         }
     }, [services])
 
+
     if(loading){
-        return <p>Carregando...</p>
+        return <p className="center">Carregando...</p>
     }
 
     return (
@@ -81,7 +88,7 @@ const Home = () => {
                         <Row>
                             <Col className="mt-4">
                                 <h3 className="title-main center">Serviços agendados para hoje</h3>
-                                {noService &&
+                                {noService && !data &&
                                     <p className="center mb-4">
                                         Não há serviços agendados.
                                     </p>
@@ -114,6 +121,11 @@ const Home = () => {
                         <Row>
                             <Col className="mt-4 mb-4">
                                 <h3 className="title-main center">Próximos serviços agendados</h3>
+                                {noService && !finalizado &&
+                                    <p className="center mb-4">
+                                        Não há serviços agendados.
+                                    </p>
+                                }
                                 <Swiper cssMode={true} navigation={true} pagination={true} mousewheel={true} keyboard={true} modules={[Navigation, Pagination, Mousewheel, Keyboard]} className="mySwiper">
                                     {services && services.map((service) => (
                                         <>

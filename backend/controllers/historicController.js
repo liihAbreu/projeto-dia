@@ -14,7 +14,6 @@ const insertHistoric = async (req, res) => {
     clientId,
   };
 
-  console.log(newHistoric);
   await Historic.create(newHistoric);
 
   // If historic was created successfuly, return data

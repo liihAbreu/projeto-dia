@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 //Solve Cors
-app.use(cors({credentials: true, origin: "http://localhost:5173/"}));
+app.use(cors());
 
 //upload directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));

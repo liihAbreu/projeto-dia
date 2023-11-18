@@ -94,8 +94,6 @@ const EditProfile = () => {
 
         formData.append("user", userFormData)
 
-        console.log(formData);
-
         await dispatch(updateProfile(formData))
 
         setTimeout(() => {

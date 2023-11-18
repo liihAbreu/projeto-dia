@@ -74,8 +74,7 @@ const deleteAllService = async (req, res) => {
 // Get all Services
 const getAllServices = async (req, res) => {
   const {id} = req.params;
-  const services = await Services.find({idMestre: id}).sort([['createdAt', -1]]).exec();
-  console.log(services);
+  const services = await Services.find({idMestre: id}).sort([['date', 1]]).exec();
   return res.status(200).json(services);
 };
 
@@ -97,7 +96,6 @@ const getServiceClientById = async (req, res) => {
 const updateServiceClient = async (req, res) => {
   const {id} = req.params;
   const {descricaoServico, valorTotal, parcelasRecebidas, hora, date, clientId} = req.body;
-  console.log(req.body);
 
   const service = await Services.findById(id);
 
@@ -142,7 +140,7 @@ const updateFinishService = async (req, res) => {
   const {finalizado} = req.body;
   await Services.updateOne({_id: id}, {finalizado: finalizado});
   const serviceFinish = await Services.findById(id);
-
+ 
 
   res.status(200).json({serviceFinish, message: 'O serviço foi finalizado com sucesso.'});
 };

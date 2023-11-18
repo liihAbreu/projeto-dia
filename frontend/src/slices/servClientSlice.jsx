@@ -63,7 +63,6 @@ export const updateServiceClient = createAsyncThunk(
     "service/updateservice",
     async (serviceData, thunkAPI) => {
         const token = thunkAPI.getState().auth.user.token;
-        console.log(serviceData);
         const data = await servClientService.updateServiceClient(serviceData, serviceData.serviceId, token);
         // Check for errors
         if (data.errors) {
@@ -80,7 +79,6 @@ export const updateFinishService = createAsyncThunk(
     async (serviceData, thunkAPI) => {
         const token = thunkAPI.getState().auth.user.token;
         const data = await servClientService.updateFinishService(serviceData, serviceData.serviceId, token);
-        console.log(serviceData);
         // Check for errors
         if (data.errors) {
             return thunkAPI.rejectWithValue(data.errors[0]);
@@ -96,7 +94,6 @@ export const updateReceived = createAsyncThunk(
     async (serviceData, thunkAPI) => {
         const token = thunkAPI.getState().auth.user.token;
         const data = await servClientService.updateReceived(serviceData, serviceData.serviceId, token);
-        console.log(serviceData);
         // Check for errors
         if (data.errors) {
             return thunkAPI.rejectWithValue(data.errors[0]);

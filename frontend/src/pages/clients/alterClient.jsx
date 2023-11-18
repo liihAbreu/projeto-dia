@@ -25,7 +25,7 @@ import Button from 'react-bootstrap/Button';
 //Components
 import { Link, useNavigate, useParams} from "react-router-dom"
 import Message from "../../components/message/message"
-import {BsCalendar3, BsClock, BsPencilFill, BsTrash, BsCurrencyDollar, BsBoxArrowRight} from "react-icons/bs"
+import {BsCalendar3, BsClock, BsPencilFill, BsTrash, BsCurrencyDollar, BsBoxArrowRight, BsPlus} from "react-icons/bs"
 import CardServicesClient from "../../components/cards/cardServicesClient";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
 
@@ -503,7 +503,7 @@ const AlterClient = () => {
                                 </Col>
                                 <Col lg={4}>
                                     {alterBtn && <button ref={btnAlter} className="btn" onClick={handleAlterServiceData}>Alterar Serviço <BsPencilFill/></button>}
-                                    {!alterBtn && <button ref={btnCadastro} onClick={handleAlterServiceData} className="btn">Cadastrar serviço <BsTrash/></button>}
+                                    {!alterBtn && <button ref={btnCadastro} onClick={handleAlterServiceData} className="btn">Cadastrar serviço <BsPlus/></button>}
                                 </Col>
                             </div>
                         </div>

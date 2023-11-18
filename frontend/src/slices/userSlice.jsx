@@ -37,7 +37,6 @@ export const getAllUsersById = createAsyncThunk(
     async (id, thunkAPI) => {
         const token = thunkAPI.getState().auth.user.token
         const data = await userService.getAllUsersById(id, token)
-        console.log(id);
         return data
     }
 )

@@ -70,7 +70,7 @@ const getClientById = async (req, res) => {
 // Get All clients by id
 const getAllClientsById = async (req, res) => {
   const {id} = req.params;
-  const clients = await Client.find({idMestre: id}).sort([['date', 1]]).exec();
+  const clients = await Client.find({idMestre: id}).sort([['nome', 1]]).exec();
 
   // Check  if service exists
   if (!clients) {

@@ -16,7 +16,6 @@ export const insertHistoric = createAsyncThunk(
     async (historic, thunkAPI) => {
         const token = thunkAPI.getState().auth.user.token
         const data = await historicService.inserthistoric(historic, token)
-        console.log(historic);
         //Check for errors
         if(data.errors){
             return thunkAPI.rejectWithValue(data.errors[0])

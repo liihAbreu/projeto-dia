@@ -17,12 +17,12 @@ const routes = [
 
 const Breadcrumbs = () => {
   const breadcrumbs = useBreadcrumbs(routes);
-
+  console.log(breadcrumbs);
   return (
     <nav>
       {breadcrumbs.map(({ match, breadcrumb }) => (
         <Link key={match.url} to={match.pathname} className={match.pattern.path == location.pathname ? "breadcrumb-active" : "breadcrumb-not-active"}>
-          {breadcrumb} - 
+          {breadcrumb.props.children} - 
         </Link>
       ))}
     </nav>

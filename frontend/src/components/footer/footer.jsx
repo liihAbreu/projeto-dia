@@ -17,6 +17,7 @@ import { urlImage } from "../../utils/config"
 
 const Footer = () => {
     const {auth} = useAuth()
+    const userLocal = JSON.parse(localStorage.getItem("user"))
     
     return (
         <>
@@ -32,9 +33,14 @@ const Footer = () => {
                             <div className="links-footer">
                                 {auth ? (
                                     <>
-                                        <Link to={`/users/`}>Clientes</Link>
-                                        <Link>Relatórios</Link>
-                                        <Link>Funcionários</Link>
+                                        <Link to={`/`}>Home</Link>
+                                        <Link to={`/clients/`}>Clientes</Link>
+                                        {userLocal && userLocal.perfil === "administrador" &&
+                                            <>
+                                                <Link to={`/report/`}>Relatórios</Link>
+                                                <Link to={`/employess/`}>Funcionários</Link>
+                                            </>
+                                        }
                                         <Link to="/profile">Perfil</Link>
                                     </>
                                 ) : (

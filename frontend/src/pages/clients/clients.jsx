@@ -20,21 +20,17 @@ import {useNavigate} from "react-router-dom"
 
 //Redux
 import { getAllClientById } from "../../slices/clientSlice"
-import { getServiceClientById } from "../../slices/servClientSlice";
 
 const Clients = () => {
     const [query, setQuery] = useState("")
-    const {clients, loading} = useSelector((state) => state.client)
+    const {clients} = useSelector((state) => state.client)
     const userLocal = JSON.parse(localStorage.getItem("user"))
     const dispatch = useDispatch()
     const navigate = useNavigate()  
 
     useEffect(() => {
         dispatch(getAllClientById(userLocal.idMestre))
-        clients.map((client) => {
-            dispatch(getServiceClientById(client._id))
-        })
-    }, [dispatch, clients, userLocal.idMestre])
+    }, [dispatch, userLocal.idMestre])
 
     //Buscar clientes
     const handleSearch = (e) => {
@@ -71,7 +67,6 @@ const Clients = () => {
                     </Row>
                     <Row>
                         <Col>
-                            {loading && <p>Carregando...</p>}
                             {clients && clients.map((client) => (
                                 <>
                                     <div className="cards">

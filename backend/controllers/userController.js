@@ -114,7 +114,6 @@ const registerAuth = async (req, res) => {
     idMestre: new mongoose.Types.ObjectId,
   });
 
-  console.log(newUser);
   // If user was created sucessfully, return the token
   if (!newUser) {
     res.status(422).json({
@@ -256,7 +255,7 @@ const getUserById = async (req, res) => {
 // Get users by id
 const getAllUsersById = async (req, res) => {
   const {id} = req.params;
-  const users = await User.find({idMestre: id}).sort([['createdAt', -1]]).exec();
+  const users = await User.find({idMestre: id}).sort([['name', 1]]).exec();
 
   // Check  if service exists
   if (!users) {

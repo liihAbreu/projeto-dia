@@ -11,6 +11,8 @@ import Form from 'react-bootstrap/Form';
 //Components
 import Message from "../../components/message/message"
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
+import { useNavigate } from "react-router-dom";
+
 
 //Hooks
 import {useState, useEffect} from "react"
@@ -27,6 +29,7 @@ const RegisterEmployee = () => {
     const [perfil, setPerfil] = useState("")
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {user,loading, error, message} = useSelector((state) => state.auth)
 
     //Enviar formulario de cadastro de funcionario
@@ -42,8 +45,9 @@ const RegisterEmployee = () => {
             idMestre: user.idMestre
         }
 
-        console.log(newUser);
         dispatch(registerEmployee(newUser))
+       
+        navigate("/employess/")
     }
 
     //Clean all auth states

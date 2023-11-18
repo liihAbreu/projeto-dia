@@ -100,41 +100,44 @@ const Report = () => {
             </div>
             <div id="report">
                 <Container>
-                    <Row>
+                    <Row> 
                         <Col style={{height: "650px"}}>
                             <h1>Relatorios</h1>
-                                <Chart
-                                    chartType="Bar"
-                                    width="100%"
-                                    height="400px"
-                                    data={data}
-                                    options={options}
-                                    controls={[
+                            {services.length === 0 && 
+                                <p className="center">Nenhum valor informado ainda.</p>
+                            }
+                            <Chart
+                                chartType="Bar"
+                                width="100%"
+                                height="400px"
+                                data={data}
+                                options={options}
+                                controls={[
+                                {
+                                    controlEvents: [
                                     {
-                                        controlEvents: [
-                                        {
-                                            eventName: "statechange",
-                                            callback: ({ controlWrapper }) => {
-                                            console.log("State changed to", controlWrapper?.getState());
-                                            },
-                                        },
-                                        ],
-                                        controlType: "CategoryFilter",
-                                        options: {
-                                        filterColumnIndex: 0,
-                                        ui: {
-                                            labelStacking: "vertical",
-                                            label: "Selecione a data:",
-                                            allowTyping: false,
-                                            allowMultiple: false,
-                                            caption: "Escolha um valor..."
-                                        },
+                                        eventName: "statechange",
+                                        callback: ({ controlWrapper }) => {
+                                        console.log("State changed to", controlWrapper?.getState());
                                         },
                                     },
-                                    ]}
+                                    ],
+                                    controlType: "CategoryFilter",
+                                    options: {
+                                    filterColumnIndex: 0,
+                                    ui: {
+                                        labelStacking: "vertical",
+                                        label: "Selecione a data:",
+                                        allowTyping: false,
+                                        allowMultiple: false,
+                                        caption: "Escolha um valor..."
+                                    },
+                                    },
+                                },
+                                ]}
 
-                                    ref={chart}
-                                />
+                                ref={chart}
+                            />
                         </Col>
                     </Row>
                     <Row>
